@@ -2,17 +2,21 @@ package com.asellion.assignment.bootstrap;
 
 import com.asellion.assignment.model.Product;
 import com.asellion.assignment.repository.ProductRepository;
+import com.asellion.assignment.service.ProductService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 //@Component
 @RequiredArgsConstructor
 public class Bootstrap implements CommandLineRunner {
     private final ProductRepository productRepository;
+    private final ProductService productService;
 
     @Override
     public void run(String... args) throws Exception {
@@ -34,8 +38,17 @@ public class Bootstrap implements CommandLineRunner {
                 .lastUpdate(new Date())
                 .build();
 
+        /**
+         *
         productRepository.save(product1);
         productRepository.save(product2);
         productRepository.save(product3);
+         */
+
+        List<Product> productList = productService.getAllProducts();
+
+        productList.forEach(product -> {
+            System.out.println(product);
+        });
     }
 }
