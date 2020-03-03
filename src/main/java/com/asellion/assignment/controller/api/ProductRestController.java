@@ -1,4 +1,4 @@
-package com.asellion.assignment.controller;
+package com.asellion.assignment.controller.api;
 
 import com.asellion.assignment.model.Product;
 import com.asellion.assignment.service.ProductService;
